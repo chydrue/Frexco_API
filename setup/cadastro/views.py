@@ -1,3 +1,8 @@
-from django.shortcuts import render
+from rest_framework import viewsets
+from cadastro.models import usuario
+from cadastro.serializer import usuarioSerializer
 
-# Create your views here.
+class UsuariosViewSet(viewsets.ModelViewSet):
+    queryset = usuario.objects.all()
+    serializer_class = usuarioSerializer
+
