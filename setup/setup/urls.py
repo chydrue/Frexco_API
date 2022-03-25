@@ -15,13 +15,16 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from cadastro.views import UsuariosViewSet
+from cadastro.views import UsuariosViewSet, index
 from rest_framework import routers
-
+from django.views.generic import TemplateView
 router = routers.DefaultRouter()
 router.register(r'usuarios', UsuariosViewSet)
+router.register(r'teste de front', index)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include(router.urls)),
+    path('index/', TemplateView.as_view(template_name='index.html')),
+
 ]
